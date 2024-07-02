@@ -1,0 +1,28 @@
+kind: pipeline
+type: docker
+name: default
+
+volumes:
+  - name: dockersock
+    host:
+      path: /var/run/docker.sock
+
+trigger:
+  branch:
+    - main
+
+steps:
+  - name: deploy
+    image: docker:dind
+    pull: if-not-exists
+    volumes:
+      - name: dockersock
+        path: /var/run/docker.sock
+    commands:
+      - ls -a
+      # - containerName="${DRONE_REPO_NAME}-${DRONE_TARGET_BRANCH}"
+      # - imageFullName="${DRONE_REPO_NAME}:${DRONE_TARGET_BRANCH}-${DRONE_COMMIT:0:8}"
+      # - echo "containerName:$containerName imageFullName:$imageFullName"
+      # - docker build -t $imageFullName .
+      - docker run -it -e FOLDER=_svg -e THEME=sprites -v ${PWD}/data:/data dolomate/spritezero
+
