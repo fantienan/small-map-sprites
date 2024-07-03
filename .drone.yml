@@ -15,9 +15,9 @@ steps:
   - name: deploy
     image: docker:dind
     pull: if-not-exists
-    volumes:
-      - name: dockersock
-        path: /var/run/docker.sock
+    # volumes:
+    #   - name: dockersock
+    #     path: /var/run/docker.sock
     commands:
       - cd data
       - docker run -e FOLDER=svgs -e THEME=sprites -v /home/mapbox:/data dolomate/spritezero
