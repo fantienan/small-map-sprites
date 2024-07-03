@@ -15,15 +15,15 @@ steps:
   - name: deploy
     image: docker:dind
     pull: if-not-exists
-    # volumes:
-    #   - name: dockersock
-    #     path: /var/run/docker.sock
+    volumes:
+      - name: dockersock
+        path: /var/run/docker.sock
     commands:
-      # - containerName="${DRONE_REPO_NAME}-${DRONE_TARGET_BRANCH}"
-      # - imageFullName="${DRONE_REPO_NAME}:${DRONE_TARGET_BRANCH}-${DRONE_COMMIT:0:8}"
-      # - echo "containerName:$containerName imageFullName:$imageFullName"
-      # - docker build -t $imageFullName .
-      # - if docker ps -a | grep $containerName | awk {'print $(NF)'} | grep -Fx $containerName; then docker stop $containerName; docker rm $containerName; fi
-      # - docker run -d -p 8001:3001 --restart=always --name $containerName $imageFullName
-      - docker run -d -p 8002:3000 --restart=always --name martin -v /drone/src/data/sprites/svgs:/svgs ghcr.io/maplibre/martin --sprite /svgs
+      - containerName="${DRONE_REPO_NAME}-${DRONE_TARGET_BRANCH}"
+      - imageFullName="${DRONE_REPO_NAME}:${DRONE_TARGET_BRANCH}-${DRONE_COMMIT:0:8}"
+      - echo "containerName:$containerName imageFullName:$imageFullName"
+      - docker build -t $imageFullName .
+      - if docker ps -a | grep $containerName | awk {'print $(NF)'} | grep -Fx $containerName; then docker stop $containerName; docker rm $containerName; fi
+      - docker run -d -p 8002:3000 --restart=always --name $containerName $imageFullName
+      # - docker run -d -p 8002:3000 --restart=always --name martin -v /drone/src/data/sprites/svgs:/svgs ghcr.io/maplibre/martin --sprite /svgs
 

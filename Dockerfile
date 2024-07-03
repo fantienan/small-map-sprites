@@ -1,11 +1,12 @@
-FROM oven/bun:alpine
+FROM ghcr.io/maplibre/martin
 
 ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 WORKDIR /app
 
-ADD . /app
+ADD deploy /app
+RUN ls -a
 
-EXPOSE 3001
-CMD ["bun", "start"]
+EXPOSE 3000
+CMD ["martin", "--sprite", "app/svgs"]
