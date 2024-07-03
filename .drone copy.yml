@@ -19,13 +19,17 @@ trigger:
 
 steps:
   - name: deploy
-    image: docker:dind
+    image: node:20-alpine
     pull: if-not-exists
     volumes:
       - name: dockersock
         path: /var/run/docker.sock
+      - name: node_modules
+        path: /drone/src/node_modules
       - name: sprites 
         path: /drone/src/sprites
     commands:
-      - docker run -e FOLDER=svgs -e THEME=sprites -v /home/mapbox:/data dolomate/spritezero
+      - echo "node version:" && node -v && echo "yarn version:" && yarn -v
+      - yarn install 
+      - yarn spritezero
 

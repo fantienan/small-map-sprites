@@ -6,7 +6,7 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "spritezero": "spritezero --retina --ratio=2 --sizes=16,32,64,128,256 /sprites data/sprites/svgs/*.svg"
+    "spritezero": "spritezero --ratio=2 data/sprites/sprites@2x data/sprites/svgs/"
   },
   "dependencies": {
     "@mapbox/spritezero-cli": "2.1.0"
