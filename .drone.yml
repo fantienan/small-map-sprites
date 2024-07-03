@@ -6,6 +6,9 @@ volumes:
   - name: dockersock
     host:
       path: /var/run/docker.sock
+  - name: node_modules
+    host:
+      path: /home/node/.cache/${DRONE_REPO}/node_modules
 
 trigger:
   branch:
@@ -13,12 +16,14 @@ trigger:
 
 steps:
   - name: deploy
-    image: docker:dind
+    image: node:20-alpine
     pull: if-not-exists
-    # volumes:
-    #   - name: dockersock
-    #     path: /var/run/docker.sock
+    volumes:
+      - name: dockersock
+        path: /var/run/docker.sock
+      - name: node_modules
+        path: /drone/src/node_modules
     commands:
-      - cd data
-      - docker run -e FOLDER=svgs -e THEME=sprites -v /home/mapbox:/data dolomate/spritezero
+      - echo "node version:" && node -v && echo "pnpm version:" && pnpm -v
+      - yarn install 
 
