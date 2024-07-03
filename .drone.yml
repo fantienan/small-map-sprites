@@ -28,5 +28,5 @@ steps:
         path: /drone/src/sprites
     commands:
       - cd data
-      - docker run -e FOLDER=svgs -e THEME=sprites -v /home/mapbox/a:/data dolomate/spritezero
+      - docker run -e FOLDER=svgs -e THEME=sprites -v /home/mapbox:/data dolomate/spritezero
 
