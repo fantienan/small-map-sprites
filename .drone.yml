@@ -6,12 +6,6 @@ volumes:
   - name: dockersock
     host:
       path: /var/run/docker.sock
-  - name: node_modules
-    host:
-      path: /home/node/.cache/${DRONE_REPO}/node_modules
-  - name: sprites
-    host:
-      path: /home/mapbox/sprites
 
 trigger:
   branch:
@@ -24,9 +18,6 @@ steps:
     volumes:
       - name: dockersock
         path: /var/run/docker.sock
-      - name: sprites 
-        path: /drone/src/sprites
     commands:
-      - cd data
-      - docker run -e FOLDER=svgs -e THEME=sprites -v /home/mapbox:/data dolomate/spritezero
+      - docker run -p 8002:3000 ghcr.io/maplibre/martin ./data/sprites/svgs
 
