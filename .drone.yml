@@ -25,6 +25,6 @@ steps:
       # - imageFullName="${DRONE_REPO_NAME}:${DRONE_TARGET_BRANCH}-${DRONE_COMMIT:0:8}"
       # - echo "containerName:$containerName imageFullName:$imageFullName"
       # - docker build -t $imageFullName .
-      - docker run -e FOLDER=svgs -e THEME=sprites -v ${PWD}/src:/data dolomate/spritezero
+      - docker run -e FOLDER=svgs -e THEME=sprites -v /home/mapbox:/src dolomate/spritezero
       # - docker run -it -e FOLDER=svgs -e THEME=sprites -v ${PWD}/src:/data dolomate/spritezero
 
