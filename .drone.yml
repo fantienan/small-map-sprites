@@ -24,6 +24,5 @@ steps:
       - echo "containerName:$containerName imageFullName:$imageFullName"
       - docker build -t $imageFullName .
       - if docker ps -a | grep $containerName | awk {'print $(NF)'} | grep -Fx $containerName; then docker stop $containerName; docker rm $containerName; fi
-      - docker run -d -p 8003:3000 --restart=always --name $containerName $imageFullName
-      # - docker run -d -p 8002:3000 --restart=always --name martin -v /drone/src/data/sprites/svgs:/svgs ghcr.io/maplibre/martin --sprite /svgs
+      - docker run -d -p 8002:3000 --restart=always --name $containerName $imageFullName
 
