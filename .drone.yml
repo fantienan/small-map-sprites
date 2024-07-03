@@ -26,4 +26,5 @@ steps:
     commands:
       - echo "node version:" && node -v && echo "yarn version:" && yarn -v
       - yarn install 
+      - yarn spritezero
 

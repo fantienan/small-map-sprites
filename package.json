@@ -4,5 +4,11 @@
   "description": "",
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "scripts": {
+    "spritezero": "spritezero --retina --ratio=2 --sizes=16,32,64,128,256 /sprites data/sprites/svgs/*.svg"
+  },
+  "dependencies": {
+    "@mapbox/spritezero-cli": "2.1.0"
+  }
 }
