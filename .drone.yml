@@ -24,6 +24,6 @@ steps:
       - name: node_modules
         path: /drone/src/node_modules
     commands:
-      - echo "node version:" && node -v && echo "pnpm version:" && pnpm -v
+      - echo "node version:" && node -v && echo "yarn version:" && pnpm -v
       - yarn install 
 
