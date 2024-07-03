@@ -21,5 +21,5 @@ steps:
     commands:
       - pwd
       - ls -a
-      - docker run -p 8002:3000 ghcr.io/maplibre/martin --sprite /drone/src/data/sprites/svgs
+      - docker run -p 8002:3000 -v /drone/src/data/sprites/svgs:/svgs ghcr.io/maplibre/martin --sprite /svgs
 
