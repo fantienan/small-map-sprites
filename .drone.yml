@@ -19,5 +19,5 @@ steps:
       - name: dockersock
         path: /var/run/docker.sock
     commands:
-      - docker run -p 8002:3000 ghcr.io/maplibre/martin ./data/sprites/svgs
+      - docker run -p 8002:3000 ghcr.io/maplibre/martin --sprite ./data/sprites/svgs
 
