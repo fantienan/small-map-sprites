@@ -11,4 +11,4 @@ RUN pwd
 RUN ls -a
 
 EXPOSE 3000
-CMD ["martin", "--config", "./config.yaml"]
+CMD ["martin", "-c", "/app/config.yaml"]
