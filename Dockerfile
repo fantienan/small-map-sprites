@@ -9,4 +9,4 @@ ADD deploy /app
 RUN martin --version
 
 EXPOSE 3000
-CMD ["martin", "--sprite ./svgs"]
+CMD ["martin", "--sprite app/svgs"]
