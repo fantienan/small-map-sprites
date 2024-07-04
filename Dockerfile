@@ -10,4 +10,4 @@ RUN martin --version
 RUN ls -a
 
 EXPOSE 3000
-CMD ["martin", "--sprite", "./svgs;"]
+CMD ["martin", "--sprite", "./svgs"]
