@@ -7,6 +7,7 @@ WORKDIR /app
 
 ADD deploy /app
 RUN martin --version
+RUN ls -a
 
 EXPOSE 3000
 CMD ["martin", "--sprite app/svgs"]
